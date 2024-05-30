@@ -1,0 +1,53 @@
+﻿@using CascadingDropDownProj.Utility
+@model ViewModelVM
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="card shadow border-0 mt-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="text-white py-2">Category - SubCategory - Product</h2>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row">
+            <div class="border p-3">
+                <label asp-for="Category.CategoryName" class="ms-2"></label>
+                <select asp-for="Category.Id" asp-items="@Model.CategoryList" class="form-select border-0 shadow">
+                    <option value="">Select Category</option>
+                </select>
+
+                <br />
+                <br />
+                <label asp-for="SubCategory.SubCategoryName" class="ms-2"></label>
+                <select id="SubCategory" name="SubCategoryId" class="form-select border-0 shadow">
+                    <option value="">Select SubCategory</option>
+                </select>
+                <br />
+                <br />
+                <label asp-for="Product.ProductName" class="ms-2"></label>
+                <select id="Product" name="ProductId" class="form-select border-0 shadow">
+                    <option value="">Select Product</option>
+                </select>
+                <br /><br />
+                @if (User.IsInRole(SD.Role_Admin))
+                {
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary form-control">Submit</button>
+                    </div>
+                }
+                
+            </div>
+            
+        </form>
+    </div>
+   
+</div>
+
+
+
+
+@section Scripts {
+    <script src="~/js/Home.js"></script>
+}
